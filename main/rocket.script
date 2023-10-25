@@ -16,10 +16,7 @@ end
 
 function update(self, dt)
 	local pos = go.get_position()
-	-- local rot = go.get_rotation()
-	-- print(rot)
 	pos = pos + self.dir * self.speed * dt
-	-- pos = pos * self.speed * dt
 	go.set_position(pos)
 
 	self.life = self.life - dt
