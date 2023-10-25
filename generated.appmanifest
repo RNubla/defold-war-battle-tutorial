@@ -1,0 +1,95 @@
+platforms:
+    armv7-ios:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: []
+            libs: [physics_2d]
+            frameworks: []
+            linkFlags: []
+    arm64-ios:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, MoltenVK, physics_2d]
+            frameworks: [Metal, QuartzCore]
+            linkFlags: []
+    x86_64-ios:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: []
+            libs: [physics_2d]
+            frameworks: []
+            linkFlags: []
+    armv7-android:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeJars: []
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, physics_2d]
+            linkFlags: []
+            jetifier: true
+    arm64-android:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeJars: []
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, physics_2d]
+            linkFlags: []
+            jetifier: true
+    arm64-osx:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, MoltenVK, physics_2d]
+            frameworks: [Metal, IOSurface, QuartzCore]
+    x86_64-osx:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, MoltenVK, physics_2d]
+            frameworks: [Metal, IOSurface, QuartzCore]
+            linkFlags: []
+    x86_64-linux:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [graphics_vulkan, X11-xcb, physics_2d]
+            linkFlags: []
+    x86-win32:
+        context:
+            excludeLibs: [libphysics, libLinearMath, libBulletDynamics, libBulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [libgraphics_vulkan.lib, vulkan-1.lib, libphysics_2d.lib]
+            linkFlags: []
+    x86_64-win32:
+        context:
+            excludeLibs: [libphysics, libLinearMath, libBulletDynamics, libBulletCollision]
+            excludeSymbols: []
+            symbols: [GraphicsAdapterVulkan]
+            libs: [libgraphics_vulkan.lib, vulkan-1.lib, libphysics_2d.lib]
+            linkFlags: []
+    js-web:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeJsLibs: []
+            excludeSymbols: []
+            symbols: []
+            libs: [physics_2d]
+            linkFlags: []
+    wasm-web:
+        context:
+            excludeLibs: [physics, LinearMath, BulletDynamics, BulletCollision]
+            excludeJsLibs: []
+            excludeSymbols: []
+            symbols: []
+            libs: [physics_2d]
+            linkFlags: []

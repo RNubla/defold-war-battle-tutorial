@@ -1,0 +1,36 @@
+--Define a new script property named dir and initialize the property with a default empty vector (vmath.vector3()). The default value can be overrided by passing values to the factory.create() function. 
+--The current property value is accessed as self.dir. This is expected to be a unit vector (of length 1).
+go.property("dir", vmath.vector3())
+
+function init(self)
+	self.speed = 200
+	self.life = 1
+end
+
+local function explode(self)
+	self.life = 1000								--Set the life timer to a large value so this code won't run every subsequent update.
+	go.set_rotation(vmath.quat())					--Set the game object rotation to 0, otherwise the explosion graphics will be rotated.
+	self.speed = 0
+	sprite.play_flipbook("#sprite", "explosion")
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	pos = pos + self.dir * self.speed * dt
+	go.set_position(pos)
+
+	self.life = self.life - dt
+	if self.life < 0 then
+		explode(self)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("animation_done") then
+		go.delete()
+	elseif message_id == hash("collision_response") then
+		explode(self)
+		go.delete(message.other_id)					--Finally delete the tank. You get the id of the game object the rocket collided with through the message.other_id variable
+		msg.post("/gui#ui", "add_score", {score = 100})
+	end
+end
